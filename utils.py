@@ -20,9 +20,10 @@ class FPS():
         self.time_start = time.time()
     return self.fps
   
-  def draw_fps(self, frame):
+  def draw_fps(self, frame, frame_number:int=None):
     self.update_fps()
-    frame = cv2.putText(frame, "FPS: " + str(int(self.fps)), (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
+    if frame_number is not None: frame = cv2.putText(frame, "Frame: " + str(frame_number) +  " FPS: " + str(int(self.fps)), (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
+    else: frame = cv2.putText(frame, "FPS: " + str(int(self.fps)), (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
     return frame 
   
 def print_config(config):
